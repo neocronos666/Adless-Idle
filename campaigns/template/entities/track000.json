@@ -1,0 +1,7 @@
+{
+  "base_function": "0.5 * Math.sin(t / 3) + 1",
+  "level_multiplier": "1 + Math.pow(n, 0.75)",
+  "initial_level": 1,
+  "max_level": 99
+}
+

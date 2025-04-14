@@ -1,0 +1,9 @@
+{
+  "campaign_name": "History of Ads",
+  "default_currency": "ad_points",
+  "reset_bonus_interval": 10,
+  "max_entities_active": 5,
+  "base_reward": 1,
+  "bonus_for_precision": true
+}
+

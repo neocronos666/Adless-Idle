@@ -1,0 +1,10 @@
+{
+  "lineal": "x",
+  "cuadrática": "x**2",
+  "logarítmica": "math.log(x+1)",
+  "exponencial": "2**x",
+  "nivel-progresivo": "x*math.log(x+1)",
+  "nueva-funcion": "x**1.5 + 10",
+  "sin-frecuencia": "10*math.sin(x/5) + 50"
+}
+
