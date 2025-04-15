@@ -7,6 +7,45 @@ import os
 import ast
 import math
 
+allowed_nodes = (
+    ast.Expression, ast.BinOp, ast.UnaryOp,
+    ast.Constant, ast.Name, ast.Call, ast.Load,
+    ast.Add, ast.Sub, ast.Mult, ast.Div, ast.Pow, ast.Mod,
+    ast.UAdd, ast.USub, ast.Attribute
+)
+
+allowed_math_funcs = {"log", "sin", "cos", "tan", "sqrt", "exp", "log10"}
+allowed_names = {"x", "math"}
+
+def is_safe_ast(node):
+    for subnode in ast.walk(node):
+        if not isinstance(subnode, allowed_nodes):
+            return False
+        if isinstance(subnode, ast.Name):
+            if subnode.id not in allowed_names:
+                return False
+        if isinstance(subnode, ast.Call):
+            # Asegurar que sea math.func, y que func esté en lista blanca
+            if not isinstance(subnode.func, ast.Attribute):
+                return False
+            if not isinstance(subnode.func.value, ast.Name):
+                return False
+            if subnode.func.value.id != "math":
+                return False
+            if subnode.func.attr not in allowed_math_funcs:
+                return False
+    return True
+
+def validate_function(expr: str):
+    try:
+        tree = ast.parse(expr, mode="eval")
+        if not is_safe_ast(tree):
+            raise ValueError("Unsafe function call structure")
+        return eval(f"lambda x: {expr}", {"math": math})
+    except Exception as e:
+        print(f"[ERROR] Function fallback to y=x → {e}")
+        return lambda x: x  # fallback seguro
+
 # Fallback function
 def fallback(x):
     return x
@@ -16,9 +55,10 @@ def safe_compile(expr: str):
     try:
         node = ast.parse(expr, mode='eval')
         allowed_nodes = (
-            ast.Expression, ast.BinOp, ast.UnaryOp, ast.Constant, ast.Name,
+            ast.Expression, ast.BinOp, ast.UnaryOp,
+            ast.Constant, ast.Name, ast.Call, ast.Load,
             ast.Add, ast.Sub, ast.Mult, ast.Div, ast.Pow, ast.Mod,
-            ast.Load, ast.Call
+            ast.UAdd, ast.USub, ast.Attribute
         )
         for subnode in ast.walk(node):
             if not isinstance(subnode, allowed_nodes):
@@ -67,5 +107,5 @@ def run_tests(json_path: str):
     plt.show()
 
 if __name__ == "__main__":
-    run_tests("test_functions.json")
+    run_tests("/tests/test_functions.json")
 
