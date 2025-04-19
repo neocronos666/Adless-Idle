@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640" style="background-color: var(--color-4);">
+  <style>
+    .text { font-family: 'Courier New', monospace; font-weight: bold; }
+    .main-color { fill: var(--color-1); }
+    .secondary-color { fill: var(--color-2); }
+    .alert-color { fill: var(--color-5); }
+    .white { fill: var(--color-3); }
+    .bg { fill: var(--color-4); }
+  </style>
+  
+  <!-- Barra superior -->
+  <rect x="0" y="0" width="360" height="50" fill="rgba(66,184,70,0.1)"/>
+  <text x="180" y="30" class="text main-color" text-anchor="middle" font-size="16">INTERCEPT TARGET</text>
+  <text x="320" y="30" class="text main-color" text-anchor="end" font-size="16">12:45</text>
+  
+  <!-- Panel central de alertas -->
+  <circle cx="180" cy="180" r="40" class="alert-color" fill-opacity="0.2"/>
+  <circle cx="180" cy="180" r="30" class="alert-color" fill-opacity="0.4"/>
+  <text x="180" y="185" class="text alert-color" text-anchor="middle" font-size="24">EJECT</text>
+  
+  <!-- Indicador de estado -->
+  <rect x="80" y="230" width="200" height="30" rx="5" class="secondary-color" fill-opacity="0.1"/>
+  <text x="180" y="250" class="text alert-color" text-anchor="middle" font-size="14" fill-opacity="0.8">NO INTEGRAL</text>
+  
+  <!-- Display de combustible -->
+  <path d="M120 280 A60 60 0 0 1 240 280" stroke="var(--color-1)" stroke-width="3" fill="none"/>
+  <path d="M120 280 A60 60 0 0 1 180 220" stroke="var(--color-1)" stroke-width="3" stroke-dasharray="5,2" fill="none"/>
+  <text x="180" y="310" class="text main-color" text-anchor="middle" font-size="14">2.4M/4GK</text>
+  
+  <!-- Indicador de velocidad -->
+  <rect x="60" y="330" width="240" height="80" rx="5" stroke="var(--color-2)" stroke-width="2" fill="none"/>
+  <text x="70" y="350" class="text white" font-size="12">VELOCITY</text>
+  <text x="290" y="350" class="text main-color" text-anchor="end" font-size="20">3.8×0.9T</text>
+  <line x1="70" y1="370" x2="290" y2="370" stroke="var(--color-2)" stroke-width="1"/>
+  
+  <!-- Altura y modo -->
+  <rect x="60" y="420" width="120" height="60" rx="3" stroke="var(--color-1)" stroke-width="1" fill="none"/>
+  <text x="120" y="440" class="text main-color" text-anchor="middle" font-size="12">LEDGE</text>
+  <path d="M80 460 L100 450 L120 460 L140 450 L160 460" stroke="var(--color-1)" stroke-width="2" fill="none"/>
+  
+  <rect x="200" y="420" width="100" height="60" rx="3" stroke="var(--color-2)" stroke-width="1" fill="none"/>
+  <text x="250" y="450" class="text secondary-color" text-anchor="middle" font-size="12">AUTO</text>
+  <text x="250" y="470" class="text secondary-color" text-anchor="middle" font-size="12">TABLETING</text>
+  
+  <!-- Barra inferior -->
+  <rect x="30" y="520" width="300" height="80" rx="5" stroke="var(--color-1)" stroke-width="1" fill="none"/>
+  <text x="180" y="545" class="text main-color" text-anchor="middle" font-size="14">FOLDED: 1525.00</text>
+  <rect x="60" y="560" width="240" height="10" rx="5" fill="var(--color-4)" stroke="var(--color-1)" stroke-width="1">
+    <animate attributeName="width" values="240;120;240" dur="3s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="60" y="560" width="180" height="10" rx="5" class="main-color" fill-opacity="0.7"/>
+  
+  <!-- Efectos visuales -->
+  <rect x="0" y="0" width="360" height="640" fill="none" stroke="var(--color-1)" stroke-width="1" stroke-dasharray="1,10" opacity="0.1"/>
+  <rect x="10" y="10" width="340" height="620" fill="none" stroke="var(--color-2)" stroke-width="0.5" stroke-dasharray="1,15" opacity="0.1"/>
+</svg>

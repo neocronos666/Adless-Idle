@@ -1,0 +1,9 @@
+# Ignorar directorios de caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignorar directorios de caché de pytest
+.pytest_cache/
+.deprecated/
+logs/

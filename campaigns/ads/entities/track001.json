@@ -4,4 +4,13 @@
   "initial_level": 1,
   "max_level": 99
 }
-
+{
+  "name": "AdBanner",
+  "icon": "ad_banner.png",
+  "level": 1,
+  "show_timer": true,
+  "show_progress_bar": false,
+  "function": "x*2 + 1",
+  "function_level": "1 + x*0.5",
+  "upgrades": [ ... ]
+}

@@ -47,3 +47,29 @@ def setup_logger(source_name: str):
 
     return logger
 
+def log_missing(missing_files: list[str], source: str = "LOADER") -> None:
+    # Verifica si el modo debug está activo
+    from loader import settings  # Asegurate que `settings` esté cargado en loader.py antes
+    if not settings.get("debug", False):
+        return
+
+    if not missing_files:
+        return
+
+    now = datetime.now()
+    date_str = now.strftime("%y%m%d")
+    time_str = now.strftime("%Y-%m-%d %H:%M:%S")
+    log_dir = os.path.join(os.getcwd(), "logs")
+    os.makedirs(log_dir, exist_ok=True)
+    log_file = os.path.join(log_dir, f"{date_str}_{source.upper()}.log")
+
+    separator = "─" * 60
+    log_entry = f'''
+        {separator}
+        ⏱️ {time_str}
+        🚨 Archivos faltantes detectados:
+        ''' + "\n".join(f"- {f}" for f in missing_files) + f"\n{separator}\n"
+
+    with open(log_file, "a", encoding="utf-8") as f:
+        f.write(log_entry)
+
