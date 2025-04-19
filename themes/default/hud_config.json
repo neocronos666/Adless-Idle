@@ -1,0 +1,23 @@
+{
+  "screen_ratio": "9:16",
+  "layout": {
+    "menu_position": "top-left",
+    "score_position": "top-right",
+    "tracks_position": "left",
+    "info_position": "right",
+    "progress_bar_position": "bottom"
+  },
+  "margins": {
+    "top": 10,
+    "left": 10,
+    "right": 10,
+    "bottom": 10
+  },
+  "block_size": {
+    "menu": [80, 40],
+    "track_button": [120, 60],
+    "info": [320, 640],
+    "progress_bar": [400, 20]
+  }
+}
+

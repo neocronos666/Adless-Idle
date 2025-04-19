@@ -1,0 +1,32 @@
+{
+  "name": "Default",
+  "engine_version": ">=1.0.0",
+  "description": "Tema retro cyberpunk para Adless Idle",
+  "version": "1.0",
+  "mode": "dark", 
+
+  "fonts": {
+    "main": "Poppins",
+    "secondary": "Quicksand",
+    "typed_text": "IM_Fell_DW_Pica_SC"
+  },
+
+  "fallback_fonts": true, 
+  "layout": "adaptive",   
+
+  "hud": {
+    "blocks": ["menu", "score", "tracks", "info", "progress_bar"],
+    "hidden": ["progress_bar"]  
+  },
+
+  "sounds": {
+    "click": "click.wav",
+    "notification": "notif.ogg"
+  },
+
+  "background": {
+    "light": "backgrounds/light.svg",
+    "dark": "backgrounds/dark.svg"
+  }
+}
+
