@@ -63,7 +63,7 @@ python main.py
 | `tests/` | Tests automáticos con Pytest para componentes del backend y visuales. |
 | `user/` | Datos de usuarios. Cada subcarpeta representa un perfil, con configuración y progresos. |
 
-> Ver [docs/estructura.md](docs/estructura.md) para una descripción completa de carpetas y archivos.
+> Ver [docs/estructura.md](docs/ES/estructura.md) para una descripción completa de carpetas y archivos.
 
 ---
 
@@ -89,6 +89,10 @@ python main.py
   - 🔧 Rediseñar el HUD desde `hud_config.json`
 
 ---
+## 📖 Maqueta del diseño
+
+![Pantalla](/docs/ES/hud.svg)
+
 
 ## 📖 Documentación adicional
 
