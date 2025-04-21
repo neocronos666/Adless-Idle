@@ -1,3 +1,90 @@
+from engine.utils.color import hex_to_rgb
+import arcade
+
+class HUDLayout:
+    def __init__(self, width, height, theme_data):
+        self.width = width
+        self.height = height
+        self.theme_data = theme_data
+
+        self.palette = theme_data.get("palette", {})
+        self.fonts = theme_data.get("fonts", {}).get("paths", {})
+        self.layout = theme_data.get("hud", {}).get("layout", {})
+        self.block_size = theme_data.get("hud", {}).get("block_size", {}) #ACAAAAAAAAAA
+
+        self.elements = []
+        self.labels = []
+        self.progress_bar = None
+
+        self.build_layout()
+
+    def build_layout(self):
+        w, h = self.width, self.height
+
+        # Menu block (top-left)
+        menu_color = self.palette.get("color-1", arcade.color.WHITE)
+
+        self.elements.append(            
+            arcade.draw_lbwh_rectangle_filled(
+                w * 0.05, h * 0.95, w * 0.1, h * 0.08, hex_to_rgb(menu_color)
+            )
+        )
+        self.labels.append(
+            arcade.Text(
+                "≡",
+                w * 0.045,
+                h * 0.935,
+                hex_to_rgb(self.palette.get("color-3", arcade.color.BLACK)), #ACAAAA
+                24,
+                font_name=self.fonts.get("main", "Arial")
+            )
+        )
+
+        # Progress bar (bottom center)
+        bar_color = hex_to_rgb(self.palette.get("color-2", arcade.color.BLUE))
+        bar_width, bar_height = self.block_size.get("progress_bar", [400, 20])
+        self.progress_bar = arcade.SpriteSolidColor(bar_width, bar_height, bar_color)
+        self.progress_bar.center_x = w / 2
+        self.progress_bar.center_y = h * 0.05
+
+    def draw(self):
+        if self.elements:
+            for element in self.elements:
+                try:
+                    if element:
+                        element.draw()
+                except AttributeError:
+                    print("Advertencia: el elemento no tiene un método 'draw'.")
+
+        if self.labels:
+            for label in self.labels:
+                try:
+                    if label:
+                        label.draw()
+                except AttributeError:
+                    print("Advertencia: la etiqueta no tiene un método 'draw'.")
+
+        if self.progress_bar:
+            try:
+                if self.progress_bar and hasattr(self.progress_bar, "draw"):
+                    self.progress_bar.draw()                
+            except AttributeError:
+                print("Advertencia: progress_bar no tiene un método 'draw'.")
+
+
+'''
+    def draw(self):
+        for element in self.elements:
+            element.draw()
+        for label in self.labels:
+            label.draw()
+        if self.progress_bar:
+            self.progress_bar.draw()
+
+  
+''' 
+
+'''
 import arcade
 
 class HUDLayout:
@@ -58,4 +145,4 @@ class HUDLayout:
 
     def update(self):
         pass  # Para futuras animaciones o efectos dinámicos
-
+'''
